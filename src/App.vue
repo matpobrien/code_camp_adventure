@@ -6,13 +6,19 @@
       <h3>Motivational:</h3>
       <h3></h3>
     </div>
-    <h1>Code Camp Adventure</h1>
+    <h1
+      :class="{
+        disabled: currentSentenceIndex > 0,
+      }"
+    >
+      Code Camp Adventure
+    </h1>
     <button @click="startGame" :class="{ disabled: currentSentenceIndex > 0 }">
       Start Learning!
     </button>
     <TypeWriter
       :text="currentSentence.text"
-      @finished="nextSentence"
+      @finished="typewriterFinished"
     ></TypeWriter>
     <button
       @click="currentSentenceIndex += 1"
@@ -45,31 +51,43 @@
     {
       text: "",
       continueLatency: -1,
+      id: 0,
     },
     {
-      text: "Welcome to Code Camp Leipzig!",
-      continueLatency: 1000,
-    },
-    {
-      text: "We're really happy to have you here.",
-      continueLatency: 2000,
-    },
-    {
-      text: "You've got a lot to learn, so let's get started!",
-      continueLatency: -1,
+      type: "story",
+      id: 1,
+      content: [
+        {
+          text: "Welcome to Code Camp!",
+          continueLatency: 1000,
+
+        },
+        {
+          text: "We're really happy to have you here.",
+          continueLatency: 2000,
+
+        },
+        {
+          text: "You've got a lot to learn, so let's get started!",
+          continueLatency: -1,
+
+        },
+      ],
     },
     {
       text:
         "Your first day is here, and you arrive in class. Today, you'll be dissassembling and reassembling a computer with your classmates.",
       continueLatency: 3000,
+      id: "First day",
     },
     {
       text: "You really wanted to learn how to use the command line, though.",
       continueLatency: 2000,
+      id: "First wish",
     },
     {
       text:
-        "Gabe gives you the choice to study a bit on your own, or join in with the class.",
+        "Your instructor, Gabe, gives you the choice to study a bit on your own, or join in with the class.",
       continueLatency: 2000,
     },
     {
@@ -93,11 +111,18 @@
     },
     {
       text:
-        "You had a good time, but accidentally dropped a screwdriver on the motherboard...twice. Not having a computer might be a problem for the rest off the course.",
+        "You had a good time, but accidentally dropped a screwdriver on the motherboard...twice. Not having a computer might be a problem for the rest of the course.",
       continueLatency: -1,
     },
   ];
   import TypeWriter from "@/components/TypeWriter.vue";
+
+  async function sleep(ms) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    })
+  }
+
   export default {
     components: {
       TypeWriter,
@@ -105,24 +130,38 @@
     data() {
       return {
         currentSentenceIndex: 0,
+        currentDisplay: "",
+        markAsFinished: null
       };
     },
     methods: {
+      async setTypewriter(text) {
+        this.currentDisplay = text;
+        return new Promise((resolve) => {
+          this.markAsFinished = resolve;
+        })
+      },
       startGame() {
         this.currentSentenceIndex = 1;
       },
-      nextSentence() {
-        const latency = this.currentSentence.continueLatency;
-        console.log(latency);
-        if (latency != -1) {
-          setTimeout(
-            function() {
-              this.currentSentenceIndex += 1;
-            }.bind(this),
-            latency
-          );
+      async nextSentence() {
+        // this.executePhase(this.currentSentenceIndex);
+        await this.setTypewriter("Hello");
+        console.log ("Finished");
+      },
+      executePhase(id) {
+        const phase = sentences.find(phase => phase.id == id);
+
+        if (phase.type == "story") {
+          for(const sentence of phase.content) {
+            await setTypewriter(sentence.text);
+            await sleep(sentence.latency)
+          }
         }
       },
+      typewriterFinished() {
+        this.markAsFinished();
+      }
     },
     computed: {
       currentSentence() {
@@ -194,7 +233,7 @@
     margin: 1rem;
   }
   .disabled {
-    visibility: hidden;
+    display: none;
   }
   /* The typewriter cursor effect */
   @keyframes blink-caret {
