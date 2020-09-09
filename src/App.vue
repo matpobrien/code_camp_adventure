@@ -1,5 +1,11 @@
 <template>
   <div id="app">
+    <div id="health-data">
+      <h3>Social:</h3>
+      <h3>Emotional:</h3>
+      <h3>Motivational:</h3>
+      <h3></h3>
+    </div>
     <h1>Code Camp Adventure</h1>
     <button @click="startGame" :class="{ disabled: currentSentenceIndex > 0 }">
       Start Learning!
@@ -25,6 +31,12 @@
         {{ choice.option }}
       </button>
     </div>
+    <h3 class="inventory">Inventory:</h3>
+    <div id="inventory">
+      <img src="../src/assets/html_logo.png" alt="" srcset="" />
+      <img src="../src/assets/javascript_logo.png" alt="" srcset="" />
+      <img src="../src/assets/npm_logo.png" alt="" srcset="" />
+    </div>
   </div>
 </template>
 
@@ -43,7 +55,7 @@
       continueLatency: 2000,
     },
     {
-      text: "You've got a lot to learn, so let's get started.",
+      text: "You've got a lot to learn, so let's get started!",
       continueLatency: -1,
     },
     {
@@ -134,6 +146,37 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+  }
+  #health-data {
+    width: 100%;
+    margin-top: 1rem;
+    position: fixed;
+    top: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  #health-data h3 {
+    margin: 0 auto;
+  }
+  #inventory {
+    height: 125px;
+    width: 90vw;
+    position: fixed;
+    bottom: 1rem;
+    border: 2px solid white;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+  }
+  #inventory img {
+    margin: 5px;
+  }
+  .inventory {
+    position: fixed;
+    left: 3rem;
+    bottom: 12rem;
   }
   h1 {
     text-align: center;
