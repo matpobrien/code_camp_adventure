@@ -5,6 +5,11 @@
 </template>
 
 <script>
+  async function sleep(ms) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
+  }
   export default {
     data() {
       return {
@@ -17,6 +22,10 @@
       text: {
         type: String,
         default: "",
+      },
+      latency: {
+        type: Number,
+        default: 0,
       },
     },
     computed: {},
@@ -31,7 +40,7 @@
         // Otherwise, update every 10ms.
         this.intervalHandle = setInterval(this.update, 10);
       },
-      update() {
+      async update() {
         //Skipping the update until "wait" becomes 0.
         if (this.wait) {
           this.wait--;
@@ -39,8 +48,11 @@
         }
         if (this.displayedText == this.text) {
           this.stopInterval();
-          //emit = creating a custom event
-          this.$emit("finished");
+          if (latency != -1) {
+            //emit = creating a custom event
+            await sleep(this.latency);
+            this.$emit("finished");
+          }
         } else {
           const nextCharacter = this.text[this.displayedText.length];
           if (nextCharacter == " ") {
