@@ -5,16 +5,16 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/game",
+    path: "/",
     name: "Game",
-    component: Game
-  }
+    component: Game,
+  },
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
 
 export default router;
