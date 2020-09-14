@@ -13,26 +13,26 @@
 </template>
 
 <script>
-  export default {
-    methods: {
-      finished() {
-        this.$emit("finished", {
-          next: this.phase.next,
-        });
-      },
-      makeDecision(next) {
-        this.$emit("finished", {
-          next,
-        });
-      },
+export default {
+  methods: {
+    finished() {
+      this.$emit("finished", {
+        next: this.phase.next
+      });
     },
-    props: {
-      phase: {
-        type: Object,
-        require: true,
-      },
-    },
-  };
+    makeDecision(next) {
+      this.$emit("finished", {
+        next
+      });
+    }
+  },
+  props: {
+    phase: {
+      type: Object,
+      require: true
+    }
+  }
+};
 </script>
 
 <style lang="css" scoped></style>
