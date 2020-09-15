@@ -1,11 +1,5 @@
 <template>
-  <div v-if="!loading">
-    <TypeWriter
-      :text="phase.text"
-      @finished="finished"
-      :latency="phase.latency"
-    ></TypeWriter>
-
+  <div>
     <button
       v-for="choice in phase.choices"
       :key="choice.title"
@@ -15,14 +9,10 @@
     >
       {{ choice.title }}
     </button>
-    <div v-if="hover">
-      <h1>Hello</h1>
-    </div>
   </div>
 </template>
 
 <script>
-  import TypeWriter from "@/components/TypeWriter.vue";
   export default {
     data() {
       return {
@@ -43,22 +33,17 @@
           item,
         });
       },
-      init() {
-        // console.log("init");
-      },
     },
-    components: {
-      TypeWriter,
-    },
-    watch: {
-      currentPhase() {
-        this.initPhase();
-      },
-    },
+
     props: {
       phase: {
         type: Object,
         require: true,
+      },
+    },
+    watch: {
+      currentPhase() {
+        this.initPhase();
       },
     },
   };
