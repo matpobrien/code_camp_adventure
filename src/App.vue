@@ -69,7 +69,7 @@
     color: white;
     outline: none;
     cursor: pointer;
-    margin: 1rem;
+    margin-right: 1rem;
   }
   .disabled {
     display: none;

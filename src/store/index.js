@@ -7,7 +7,7 @@ export default new Vuex.Store({
   state: {
     phaseHistory: [
       {
-        id: "day-one-4",
+        id: "intro",
         type: "",
       },
     ],

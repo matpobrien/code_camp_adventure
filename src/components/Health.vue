@@ -1,30 +1,38 @@
 <template>
-  <div id="health-bar">
-    <div id="emotional">
-      <h3>
-        Emotional:
-      </h3>
-      <img src="../assets/heart.png" alt="" />
-      <img src="../assets/heart.png" alt="" />
-      <img src="../assets/heart.png" alt="" />
-      <img src="../assets/heart.png" alt="" />
-      <img src="../assets/heart.png" alt="" />
-    </div>
-    <div id="motivational">
-      <h3>Motivational:</h3>
-      <img src="../assets/motivation.png" alt="" />
-      <img src="../assets/motivation.png" alt="" />
-      <img src="../assets/motivation.png" alt="" />
-      <img src="../assets/motivation.png" alt="" />
-      <img src="../assets/motivation.png" alt="" />
-    </div>
-    <div id="social">
-      <h3>Social:</h3>
-      <img src="../assets/social.png" alt="" />
-      <img src="../assets/social.png" alt="" />
-      <img src="../assets/social.png" alt="" />
-      <img src="../assets/social.png" alt="" />
-      <img src="../assets/social.png" alt="" />
+  <div class="health">
+    <div id="health-bar">
+      <div class="emotional">
+        <p>
+          Emotional:
+        </p>
+        <div class="bars" id="emotional">
+          <img src="../assets/heart.png" alt="" />
+          <img src="../assets/heart.png" alt="" />
+          <img src="../assets/heart.png" alt="" />
+          <img src="../assets/heart.png" alt="" />
+          <img src="../assets/heart.png" alt="" />
+        </div>
+      </div>
+      <div id="motivational">
+        <p>Motivational:</p>
+        <div class="bars">
+          <img src="../assets/motivation.png" alt="" />
+          <img src="../assets/motivation.png" alt="" />
+          <img src="../assets/motivation.png" alt="" />
+          <img src="../assets/motivation.png" alt="" />
+          <img src="../assets/motivation.png" alt="" />
+        </div>
+      </div>
+      <div id="social">
+        <p>Social:</p>
+        <div class="bars">
+          <img src="../assets/social.png" alt="" />
+          <img src="../assets/social.png" alt="" />
+          <img src="../assets/social.png" alt="" />
+          <img src="../assets/social.png" alt="" />
+          <img src="../assets/social.png" alt="" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -34,21 +42,41 @@
 </script>
 
 <style lang="css" scoped>
-  h3 {
-    margin: auto auto;
+  p {
+    margin-bottom: 1vh;
   }
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
   #health-bar {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     border: 2px solid white;
-    max-height: 12vh;
-    max-width: 90vw;
-
+    width: 100%;
     padding: 0.5rem;
   }
+
+  #emotional {
+    border-left: 2px solid white;
+  }
+
+  .bars {
+    margin: 0.25rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    /* border-left: 2px solid white; */
+    border-right: 2px solid white;
+  }
   img {
-    max-height: 30px;
-    max-width: 30px;
-    margin: 0.2rem;
+    width: 50%;
+    margin: 0.1rem auto;
+  }
+
+  img:after {
+    padding-bottom: 100%;
   }
 </style>

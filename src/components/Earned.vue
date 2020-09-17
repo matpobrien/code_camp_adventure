@@ -1,18 +1,18 @@
 <template>
   <div id="earned">
-    <div id="earned-box">
+    <div id="earned-box" class="pulse">
       <h3>
         {{ phase.text }}
       </h3>
       <img :src="phase.image" alt="" />
     </div>
-    <button
+    <!-- <button
       v-for="choice in phase.choices"
       :key="choice.title"
       @click="makeDecision(choice.next)"
     >
       {{ choice.title }}
-    </button>
+    </button> -->
   </div>
 </template>
 
@@ -47,6 +47,7 @@
     margin: 0 auto;
   }
   h3 {
+    line-height: 1.5rem;
     margin: 1rem auto;
   }
   #earned {
@@ -62,5 +63,15 @@
     flex-direction: column;
     padding: 1rem;
     text-align: center;
+  }
+
+  .pulse {
+    animation: pop 0.5s ease-in;
+  }
+
+  @keyframes pop {
+    50% {
+      transform: scale(1.1);
+    }
   }
 </style>

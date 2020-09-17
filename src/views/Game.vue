@@ -1,8 +1,10 @@
 <template>
   <div id="field">
-    <div id="health-menu">
-      <Health></Health>
-      <Menu></Menu>
+    <div class="menu">
+      <div id="health-menu" v-if="this.$store.state.phaseHistory.length">
+        <Health></Health>
+        <Menu></Menu>
+      </div>
     </div>
     <div id="story-content">
       <component
@@ -18,7 +20,7 @@
       <Buttons :phase="currentPhase" @finished="nextPhase"></Buttons>
     </div>
 
-    <div id="language-bar">
+    <div id="language-bar" v-if="this.$store.state.phaseHistory.length">
       <Language-Bar></Language-Bar>
     </div>
   </div>
@@ -103,13 +105,13 @@
 
   #health-menu {
     display: grid;
-    grid-template-columns: 90% 10%;
+    gap: 1rem;
+    grid-template-columns: 80% 1fr;
     max-width: 90vw;
-    margin: 1rem auto;
+    margin: 0.5rem auto;
   }
 
   #language-bar {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin: 0.5rem 0;
   }
 </style>

@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    <h3>MENU</h3>
+  </div>
 </template>
 
 <script>
@@ -9,8 +11,13 @@
 <style lang="css" scoped>
   div {
     border: 2px solid white;
-    max-height: 5vh;
-    max-width: 100%vw;
-    margin: 1rem auto;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
   }
 </style>

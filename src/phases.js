@@ -1,5 +1,16 @@
 export default [
   {
+    id: "start",
+    type: "Choice",
+    text: "Begin your Code Camp Adventure",
+    choices: [
+      {
+        title: "START!",
+        next: "intro",
+      },
+    ],
+  },
+  {
     id: "intro",
     type: "Story",
     text: "Welcome to Code Camp!",
@@ -96,7 +107,7 @@ export default [
   {
     id: "Apple",
     text:
-      "That was so much fun! Even though you dropped a screwdriver on the motherboard... twice. So embarrassing! Takee an apple to refuel!",
+      "That was so much fun! Though, you dropped a screwdriver on the motherboard... twice. So embarrassing! Take an apple to refuel!",
     type: "Earned",
     choices: [{ title: "Continue", next: "day-two" }],
     image: require("../src/assets/apple.png"),
