@@ -3,8 +3,9 @@
     <h3>Languages:</h3>
     <div id="languages">
       <img src="../assets/cli_tool.png" />
-
       <img src="../assets/html_logo.png" alt="" />
+      <img src="../assets/javascript_logo.png" alt="" />
+      <img src="../assets/npm_logo.png" alt="" />
     </div>
   </div>
 </template>
