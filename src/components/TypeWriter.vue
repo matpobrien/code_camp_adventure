@@ -84,8 +84,17 @@
 </script>
 
 <style scoped>
+  h2 {
+    line-height: 2rem;
+    font-size: 1.5rem;
+  }
+  div {
+    max-width: 90vw;
+    text-align: center;
+  }
   .blink-caret {
-    border-left: 4px solid white;
+    border-left: 20px solid white;
+    border-top: 2px solid white;
     animation: blink-caret 1s step-end infinite;
   }
 

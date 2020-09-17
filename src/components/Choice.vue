@@ -1,23 +1,20 @@
 <template>
-  <div v-if="!loading">
+  <div>
     <TypeWriter
       :text="phase.text"
       @finished="finished"
       :latency="phase.latency"
     ></TypeWriter>
 
-    <button
+    <!-- <button
       v-for="choice in phase.choices"
       :key="choice.title"
       @click="makeDecision(choice.next, choice.learn, choice.item)"
-      @mouseover="hover = true"
+      @mouseenter="hover = true"
       @mouseleave="hover = false"
     >
       {{ choice.title }}
-    </button>
-    <div v-if="hover">
-      <h1>Hello</h1>
-    </div>
+    </button> -->
   </div>
 </template>
 
@@ -31,11 +28,7 @@
       };
     },
     methods: {
-      finished() {
-        this.$emit("finished", {
-          next: this.phase.next,
-        });
-      },
+      finished() {},
       makeDecision(next, language, item) {
         this.$emit("finished", {
           next,
@@ -64,4 +57,8 @@
   };
 </script>
 
-<style lang="css" scoped></style>
+<style lang="css" scoped>
+  div {
+    text-align: center;
+  }
+</style>

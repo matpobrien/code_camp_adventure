@@ -11,6 +11,6 @@
     border: 2px solid white;
     max-height: 5vh;
     max-width: 100%vw;
-    margin: 0 auto;
+    margin: 1rem auto;
   }
 </style>

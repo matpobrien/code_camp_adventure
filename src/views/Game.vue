@@ -14,9 +14,13 @@
       </component>
     </div>
 
-    <Buttons></Buttons>
+    <div id="buttons">
+      <Buttons :phase="currentPhase" @finished="nextPhase"></Buttons>
+    </div>
 
-    <Language-Bar></Language-Bar>
+    <div id="language-bar">
+      <Language-Bar></Language-Bar>
+    </div>
   </div>
 </template>
 
@@ -87,18 +91,25 @@
     width: 100vw;
     height: 100vh;
     display: grid;
-    grid-template-rows: 10vh 1fr 10vh 30vh;
+    grid-template-rows: auto 1fr auto auto;
   }
 
   #story-content {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-y: hidden;
   }
 
   #health-menu {
     display: grid;
     grid-template-columns: 90% 10%;
     max-width: 90vw;
+    margin: 1rem auto;
+  }
+
+  #language-bar {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 </style>

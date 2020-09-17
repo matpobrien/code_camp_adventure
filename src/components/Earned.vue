@@ -4,15 +4,15 @@
       <h3>
         {{ phase.text }}
       </h3>
-      <img src="../assets/cli_tool.png" alt="" />
+      <img :src="phase.image" alt="" />
     </div>
-    <!-- <button
+    <button
       v-for="choice in phase.choices"
       :key="choice.title"
       @click="makeDecision(choice.next)"
     >
       {{ choice.title }}
-    </button> -->
+    </button>
   </div>
 </template>
 
